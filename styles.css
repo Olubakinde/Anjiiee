@@ -1,0 +1,364 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'San Francisco', sans-serif;
+  height: 100%;
+  background-color: #f5f5f7;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+#container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  padding: 0 10px; /* Added padding for better spacing on small screens */
+}
+
+.content {
+  position: relative;
+  color: #333;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+/* Heading and button styles */
+.content h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: scale(0.98);
+  animation: fadeInScale 2s ease-out forwards;
+}
+
+/* Keyframe animation for smooth fade and scale */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Button Styling */
+button {
+  background-color: transparent;
+  border: 2px solid #676767;
+  color: #676767;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Music Toggle */
+#music-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* Styling the images */
+.image {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 20px;
+  background-color: #ccc;
+  background-image: url('image.jpg'); /* Add your image URLs here */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards, randomMovement 10s linear infinite;
+}
+/* Styling for images using <img> tags */
+.image1, .image2, .image3, .image4 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 20px;
+  object-fit: cover; /* Ensures the images are cropped to fit the circle */
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards, randomMovement 10s linear infinite;
+}
+
+.image1 {
+  top: 20px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.image2 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.image3 {
+  bottom: 8%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.image4 {
+  bottom: 20%;
+  right: 5%;
+  animation-delay: 3s;
+}
+
+/* Keyframe for fading in images */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Keyframe for random movement of images */
+@keyframes randomMovement {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(50px, -50px);
+  }
+  50% {
+    transform: translate(-100px, 100px);
+  }
+  75% {
+    transform: translate(-50px, -30px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+
+.timeline-heading {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Smooth fade-in transition for the timeline */
+.timeline {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 60vh; /* Set a maximum height for the timeline */
+  width: 100%; /* Ensure timeline takes full width */
+  padding-right: 15px; /* Allow space for scroll bar */
+}
+
+/* Timeline container adjustment */
+.timeline-container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Allow scroll if content overflows */
+  max-height: 100%; /* Make sure it can scroll if content is large */
+}
+
+/* Timeline items */
+.timeline-item {
+  position: relative;
+  width: 100%;
+  margin: 40px 0;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timeline-date {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007aff;
+  margin-bottom: 10px;
+}
+
+.timeline-content h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.timeline-content p {
+  color: #777;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hover effect for the music toggle */
+#music-toggle:hover {
+  background-color: rgba(0, 122, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Hidden love-question section */
+.love-question {
+  opacity: 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Animation for 'I love you' */
+@keyframes loveAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Styling for "I love you" message */
+#response-message.love {
+  color: #f44336;
+  animation: loveAnimation 2s ease-in-out forwards;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2.5rem; /* Adjust heading size */
+    margin-bottom: 15px;
+  }
+
+  button {
+    font-size: 1rem; /* Adjust button size */
+    padding: 12px 25px;
+  }
+
+  .timeline-container {
+    width: 90%; /* Adjust timeline container width */
+    padding: 30px 0;
+  }
+
+  .timeline-date {
+    font-size: 1rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .timeline-content p {
+    font-size: 1rem; /* Adjust text size for better readability */
+  }
+
+  .image1, .image2, .image3, .image4 {
+    width: 120px;
+    height: 120px;
+  }
+
+  #music-toggle {
+    font-size: 1.5rem;
+  }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 480px) {
+  .content h1 {
+    font-size: 2rem; /* Adjust heading size */
+    margin-bottom: 10px;
+  }
+
+  button {
+    font-size: 0.9rem; /* Adjust button size */
+    padding: 10px 20px;
+  }
+
+  .timeline-container {
+    width: 100%; /* Make timeline container full-width */
+    padding: 20px 0;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem; /* Adjust paragraph font size */
+  }
+
+  .image1, .image2, .image3, .image4 {
+    width: 100px;
+    height: 100px;
+  }
+
+  #music-toggle {
+    font-size: 1.2rem;
+    top: 10px;
+    right: 10px;
+  }
+}
